@@ -5,12 +5,8 @@ import org.junit.Test;
 
 public class calculatortest{
 
-	public static void main(String args[]) {
-		org.junit.runner.JUnitCore.main("is.ru.stringcalculator.calculatortest");
-	}
-
 	@Test
-	/*public void test() {
-		assertEquals(0, calculator.add(""));
-	}*/
+	public void testEmptyString() {
+		assertEquals(0, Calculator.add(""));
+	}
 }
