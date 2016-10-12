@@ -1,32 +1,33 @@
 package is.ru.stringcalculator;
 
+import java.util.ArrayList;
+
 public class Calculator {
 
-	public static int add(String text){
 
-		if(text.contains(",") || text.contains("\\n")) {
-
-			String[] number = text.split(",|\\n");
-			return sum(number);
-		}
-		else
+	public static int add(String text) {
+		if(text.equals("")){
 			return 0;
-		
-	}
-
-
-	private static int toInt(String number){
-		return Integer.parseInt(number);
-	}
-      
-    private static int sum(String[] numbers){
- 	    int total = 0;
-        for(String number : numbers){
-		    total += toInt(number);
 		}
-		return total;
-    }
+    	int total = 0;
+    	String[] numbersArray = text.split(",|\\n");
+    	ArrayList<Integer> negativeNumbers = new ArrayList<Integer>();
+    	for(String number : numbersArray) {
+    		int n = toInt(number);
+            	if(n < 0) {
+                	negativeNumbers.add(n);
+            	}
+            total += n;
+        	}
+    	if(negativeNumbers.size() > 0) {
+        	throw new RuntimeException("Negatives not allowed: " + negativeNumbers.toString());
+    	}
+    	return total;   
 
+	}
+	public static int toInt(String number){
+		return Integer.parseInt(number);
+		}
 
-
+     
 }
