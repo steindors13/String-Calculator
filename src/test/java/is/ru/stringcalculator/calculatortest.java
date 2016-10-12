@@ -53,4 +53,18 @@ public class CalculatorTest {
     	assertEquals("Negatives not allowed: [-4, -5]", exception.getMessage());
 	}
     
+    @Test
+    public void lessOrEqualToThousand(){
+    	assertEquals(5, Calculator.add("1001,2,3"));
+    }
+
+    @Test
+	public void changeDelimeters() {
+		assertEquals(3, Calculator.add("//;\n1;2"));
+	}
+
+	@Test
+	public void changeDelimetersTwo() {
+		assertEquals(12, Calculator.add("//a\n1a2,3a6"));
+	}
 }
